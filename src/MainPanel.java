@@ -82,23 +82,24 @@ public class MainPanel extends JPanel {
 	}
 
 	public boolean iterateCell(int x, int y) {
-		String toReturn = "false";
+		boolean toReturn = false;
 		boolean alive = _cells[x][y].getAlive();
 		int numNeighbors = getNumNeighbors(x, y);
 		if (alive) {
 			if (numNeighbors < 2 || numNeighbors > 3) {
-				toReturn = "false";
+				toReturn = false;
 			} else {
-				toReturn = "true";
+				toReturn = true;
 			}
 		} else {
 			if (numNeighbors == 3) {
-				toReturn = "true";
+				toReturn = true;
 			} else {
-				toReturn = "false";
+				toReturn = false;
 			}
 		}
 		
+		/*
 		int c = 0;
 		String padding = "0";
 		while (c < _r * 10) {
@@ -106,9 +107,11 @@ public class MainPanel extends JPanel {
 			padding += l;
 			c++;
 		}
-		toReturn = padding + toReturn;
+		toReturn = padding + toReturn;*/
 	
-		return Boolean.parseBoolean(toReturn.substring(padding.length()));
+		//return Boolean.parseBoolean(toReturn.substring(padding.length()));
+		
+		return toReturn;
 	}
 
 	public void displayIteration(boolean[][] nextIter) {
