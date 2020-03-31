@@ -53,7 +53,7 @@ public class GameOfLifePinningTest {
 			for (int y = 0; y < 5; y++) {
 				tempData[x][y] = Mockito.mock(Cell.class); // Fills data with mock cells as cells arent being tested
 															// here.
-				if (y == 2 && x > 0 && x < 4) { // Setting up blinker pattern
+				if (x == 2 && y > 0 && y < 4) { // Setting up blinker pattern
 					Mockito.when(tempData[x][y].getAlive()).thenReturn(true); // Marked as alive
 				} else {
 					Mockito.when(tempData[x][y].getAlive()).thenReturn(false); // Marked as dead
@@ -77,20 +77,20 @@ public class GameOfLifePinningTest {
 
 	/**
 	 * Test case for if a living cell will die under right conditions
-	 * Preconditions: Panel is set up in a horizontal blinker pattern
+	 * Preconditions: Panel is set up in a vertical blinker pattern
 	 * Execution steps: Iterate the specific cell
 	 * Postconditions: Cell has passed.
 	 */
 	@Test
 	public void iterateCellDeadTest() {
-		Boolean result = panel.iterateCell(1, 2);
+		Boolean result = panel.iterateCell(2, 1);
 		assertFalse("Cell should be dead but is still alive!", result);
 	}
 
 
 	/**
 	 * Test case for if a dead cell stays dead under right conditions
-	 * Preconditions: Panel is set up in a horizontal blinker pattern.
+	 * Preconditions: Panel is set up in a vertical blinker pattern.
 	 * Execution steps: Iterate the specific cell
 	 * Postconditions: Cell is still marked as dead.
 	 */
@@ -103,20 +103,20 @@ public class GameOfLifePinningTest {
 
 	/**
 	 * Test case for if a dead cell will become alive under right conditions.
-	 * Preconditions: Panel is set up in a horizontal blinker pattern
+	 * Preconditions: Panel is set up in a vertical blinker pattern
 	 * Execution steps: Iterate the specific cell
 	 * Postconditions: Cell has revived.
 	 */
 	@Test
 	public void iterateCellAliveTest() {
-		Boolean result = panel.iterateCell(2, 1);
+		Boolean result = panel.iterateCell(1, 2);
 		assertTrue("Cell should be alive but is still dead!", result);
 	}
 
 
 	/**
 	 * Test case to make sure a living cell does not die under right conditions
-	 * Preconditions: Panel is set up in a horizontal blinker pattern.
+	 * Preconditions: Panel is set up in a vertical blinker pattern.
 	 * Execution steps: Iterate the specific cell
 	 * Postconditions: Cell is still marked as alive.
 	 */
@@ -170,9 +170,9 @@ public class GameOfLifePinningTest {
 
 	/**
 	 * Test case for iterating the whole board.
-	 * Preconditions: Panel is in a horizontal blinker pattern
+	 * Preconditions: Panel is in a vertical blinker pattern
 	 * Execution steps: run calculateNextIteration
-	 * Postconditions: Verify the board is now in a vertical blinker pattern
+	 * Postconditions: Verify the board is now in a horizontal blinker pattern
 	 */
 	@Test
 	public void CalculateNextIterationTest() {
@@ -181,7 +181,7 @@ public class GameOfLifePinningTest {
 		for (int x = 0; x < 5; x++) {
 			for (int y = 0; y < 5; y++) {
 				tempData[x][y] = new FakeCell();
-				if (y == 2 && x > 0 && x < 4) { // Setting up blinker pattern
+				if (x == 2 && y > 0 && y < 4) { // Setting up blinker pattern
 					tempData[x][y].setAlive(true); // Marked as alive
 				} else {
 					tempData[x][y].setAlive(false); // Marked as dead
@@ -197,7 +197,7 @@ public class GameOfLifePinningTest {
 		tempData=panel.getCells();	//Export cells after calculating iteration
 		for (int x = 0; x < panel.getCellsSize(); x++) {
 			for (int y = 0; y < panel.getCellsSize(); y++) {
-				if (x == 2 && y < 4 && y > 0)
+				if (y == 2 && x < 4 && x > 0)
 					assertTrue("Cell["+x+"]["+y+"] was marked dead when it should be alive!",tempData[x][y].getAlive());
 				else
 					assertFalse("Cell["+x+"]["+y+"] was marked alive when it should be dead!",tempData[x][y].getAlive());
