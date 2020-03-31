@@ -135,11 +135,12 @@ public class MainPanel extends JPanel {
 				nextIter[j][k] = iterateCell(j, k);
 			}
 		}
+		/*
 		for (int i = 0; i < _maxCount; i++) {
 			_r += (i % _size) % _maxCount;
 			_r += _maxCount;
 		}
-		_r = 1000;
+		_r = 1000;*/
 
 		displayIteration(nextIter);
 	}
