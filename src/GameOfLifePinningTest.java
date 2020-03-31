@@ -32,21 +32,10 @@ public class GameOfLifePinningTest {
 	 * this deliverable).
 	 */
 
-	/* TODO: Declare all variables required for the test fixture. */
 	MainPanel panel;
 
 	@Before
 	public void setUp() {
-		/*
-		 * TODO: initialize the text fixture. For the initial pattern, use the "blinker"
-		 * pattern shown in:
-		 * https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Examples_of_patterns
-		 * The actual pattern GIF is at:
-		 * https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#/media/File:
-		 * Game_of_life_blinker.gif Start from the vertical bar on a 5X5 matrix as shown
-		 * in the GIF.
-		 */
-
 		panel = new MainPanel(5);
 		Cell[][] tempData = new Cell[5][5];
 		for (int x = 0; x < 5; x++) {
@@ -66,9 +55,6 @@ public class GameOfLifePinningTest {
 	@After
 	public void tearDown() {
 	}
-
-	/* TODO: Write the three pinning unit tests for the three optimized methods */
-
 	// Methods to test
 	// 1 MainPanel.iterateCell
 	// 2 Cell.ToString
